@@ -10,9 +10,13 @@
     <title>Easy Article</title>
   </head>
   <body>
-    <div class="container">
-      <button onclick="previousArticle()" class="backButton">Back</button>
-      <button onclick="forwardArticle()" class="forwardButton">Forward</button>
+    <div class="dropdown">
+      <button id="dropdownButton">History</button>
+      <div id="dropdownMenu" class="dropdown-content">
+      </div>
+    </div>
+
+
       <h1>Easy Article</h1>
       <textarea id="urlInput" placeholder="Paste URL..."></textarea>
       <button onclick="fetchData()">Fetch URL</button>

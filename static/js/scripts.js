@@ -3,16 +3,62 @@ clearText();
 
 // Variables
 url_array = []; // of string
-pointer = -1;
+pointer = -1
+
+// function for displaying history drop down menu
+document.addEventListener("DOMContentLoaded", function() {
+  const button = document.getElementById("dropdownButton");
+  const menu = document.getElementById("dropdownMenu");
+
+  button.addEventListener("click", function(){
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  });
+
+  // Close the dropdown menu if user clicks outside of it
+  window.addEventListener("click", function(event){
+    if (!button.contains(event.target) && !menu.contains(event.target)){
+      menu.style.display = "none";
+    }
+  })
+})
+
+function openHistoryURL(id){
+  url = id
+  document.getElementById("urlInput").value = url;
+  fetchData();
+}
+
+// function for updating history list. Takes data.header (of article) as parameter and data.url (of article)
+function updateHistory(url, header){
+  duplicate = false
+  for(let i = 0; i < url_array.length; i++){
+    console.log(url_array[i])
+    if (url_array[i] == url){
+      duplicate = true;
+    };
+  }
+  console.log(duplicate)
+  if(duplicate == false){
+    // update pointer
+    pointer = pointer + 1
+    // store the url in our url_array
+    url_array[pointer] = url;
+    // Add url to history list
+    dropdownMenu = document.getElementById("dropdownMenu");
+    const newLink = document.createElement("a");
+    newLink.id = url;
+    newLink.textContent = header;
+    newLink.onclick = function(){
+      openHistoryURL(newLink.id)
+    }
+    dropdownMenu.appendChild(newLink);
+    }
+   
+};
 
 async function fetchData() {
   // Fetch user URL input
   const url = document.getElementById("urlInput").value;
-  // increase our pointer
-  pointer += 1;
-  // store the url in our url_array
-  // url_array.push(url);
-  url_array[pointer] = url;
 
   // Fetch the new data
   const response = await fetch("/fetch", {
@@ -28,6 +74,8 @@ async function fetchData() {
     "readingTimeText"
   ).innerText = `Estimated reading time: ${data.reading_time} minutes`;
   document.getElementById("textArea").value = data.text.join("\n\n");
+
+  updateHistory(url, data.header);
 }
 
 function saveText() {
@@ -54,6 +102,8 @@ function openFile() {
   input.click();
 }
 
+
+// function which clears the article text box and url input box
 function clearText() {
   document.getElementById("headerText").innerText = "";
   document.getElementById("readingTimeText").innerText = "";
@@ -61,6 +111,7 @@ function clearText() {
   document.getElementById("textArea").value = "";
 }
 
+// function which opens the <url> in the input box at its source.
 function openWebsite() {
   const url = document.getElementById("urlInput").value;
   if (url) {
@@ -68,6 +119,7 @@ function openWebsite() {
   }
 }
 
+// Prompts the user for a wiki search term
 function openWikiSearch() {
   const term = prompt("Enter wiki search term");
   if (term) {
@@ -76,10 +128,6 @@ function openWikiSearch() {
 }
 
 async function fetchWikiData(term) {
-  // store the url in our url_array
-  url_array.push(`https://en.wikipedia.org/wiki/${term}`);
-  // increase our pointer
-  pointer += 1;
 
   const response = await fetch("/wiki_search", {
     method: "POST",
@@ -95,6 +143,8 @@ async function fetchWikiData(term) {
     "readingTimeText"
   ).innerText = `Estimated reading time: ${data.reading_time} minutes`;
   document.getElementById("textArea").value = data.text.join("\n\n");
+
+  updateHistory(`https://en.wikipedia.org/wiki/${term}`, data.header);
 }
 
 async function openHeadline() {
@@ -110,33 +160,3 @@ async function openHeadline() {
   fetchData();
 }
 
-function previousArticle() {
-  // only attempt to access previous url if not first article
-  if (pointer > 0) {
-    pointer -= 1;
-    // set the url input to the previous url
-    document.getElementById("urlInput").value = url_array[pointer];
-    // decrease pointer again to compensate for the pointer increase inside fetch function
-    pointer -= 1;
-    // fetch the url at that pointer and display on page
-    fetchData();
-  } else {
-    console.log("no option to go back");
-  }
-}
-
-function forwardArticle() {
-  // only attempt if there is an article infront of our current one
-  length = url_array.length - 1;
-  if ((pointer < length) & (pointer != length)) {
-    pointer += 1;
-    // set the url input to the new url
-    document.getElementById("urlInput").value = url_array[pointer];
-    // decrease pointer again to compensate for the pointer increase inside fetch function
-    pointer -= 1;
-    // fetch the url
-    fetchData();
-  } else {
-    console.log("no article to move forwards to.");
-  }
-}
