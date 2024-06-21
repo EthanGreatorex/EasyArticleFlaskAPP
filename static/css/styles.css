@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #171717;
+  color: #ffffff;
+  text-align: center;
+}
+.container {
+  width: 80%;
+  margin: auto;
+}
+textarea {
+  width: 100%;
+  height: 10px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #171717;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.outputTextArea {
+  height: 1000px;
+  text-align: left;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: hsl(0, 0%, 0%);
+  border: none;
+  cursor: pointer;
+}
+
+button:not(hover) {
+  transition: all 0.1s ease;
+}
+
+button:hover {
+  background-color: #cccccc;
+  font-size: 15px;
+  transition: all 0.1s ease;
+}
+
+.backButton {
+  position: absolute;
+  left: 10%;
+}
+
+.forwardButton {
+  position: absolute;
+  right: 10%;
+}
+
+a {
+  color: black;
+}
