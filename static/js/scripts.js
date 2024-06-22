@@ -47,7 +47,7 @@ function updateHistory(url, header){
     dropdownMenu = document.getElementById("dropdownMenu");
     const newLink = document.createElement("a");
     newLink.id = url;
-    newLink.textContent = header;
+    newLink.textContent = header.substring(0,10);
     newLink.onclick = function(){
       openHistoryURL(newLink.id)
     }

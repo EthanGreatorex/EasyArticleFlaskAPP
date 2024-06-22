@@ -1,0 +1,41 @@
+
+Fetch URL
+ - Button to click when the URL input box contains a URL
+ - Initiates the functions for fetching and displaying the article
+ - Will not run if the input box is empty
+
+Open Website
+ - Reads the URL from the URL input box
+ - Attempts to open the URL from its source E.g. https://www.example.com
+
+Wiki Search
+ - Displays a prompt box
+ - The user will enter a term E.g. spiderman
+ - A function is called to concatinate a URL E.g. https://en.wikipedia.org/wiki/<term>
+ - Calls the same functions as Fetch URL
+
+Headline
+ - Accesses the top headline on BBC News
+ - Updates the URL input box to show the URL to the headline
+ - Calls Fetch URl ... (which takes the URL from the input box)
+
+Open File
+ - Opens the users file application E.g. Windows Explorer
+ - The user can select a .txt file E.g. NewArticle.txt
+ - A function will display the text in the Results box
+
+Save File
+ - Opens the users file application E.g. Windows Explorer
+ - Allows the user to save the text inside the Results box as a txt file
+
+Clear
+ - Calls a function which removes any text from the Results box and clears the URL input box
+ - This function is called on a page refresh/load to ensure the viewport is clean
+
+History
+ - Displays a drop-down menu on click
+ - Drop-down menu contains the clickable elements
+ - Each element has a name (the article header)
+ - Each element has an ID containing its URL E.g. https://en.wikipedia.org/wiki/spiderman
+ - On click... updates the URL input box to display the elements ID
+ - Calls Fetch URL ... (which takes the URL from the input box)
