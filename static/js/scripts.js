@@ -22,11 +22,31 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 })
 
+// Function for displaying articles from the history menu
 function openHistoryURL(id){
   url = id
   document.getElementById("urlInput").value = url;
   fetchData();
 }
+
+// Function which deletes an item from the history menu. The deleted item is the item the user clicks delete on.
+function deleteHistoryItem(id){
+  url = id
+  historyItem = document.getElementById(url);
+  // Remove the item if the element exists
+  parentContainer = historyItem.parentNode;
+  if(parentContainer){
+    parentContainer.remove();
+  }
+  // Remove the url from our url_array so the item can re-enter into our history dropdown menu.
+  for(let i = 0; i < url_array.length; i++){
+    if (url_array[i] == url){
+      url_array.splice(i);
+    }
+  }
+  // Decrease the pointer
+  pointer = pointer -1;
+};
 
 // function for updating history list. Takes data.header (of article) as parameter and data.url (of article)
 function updateHistory(url, header){
@@ -45,15 +65,37 @@ function updateHistory(url, header){
     url_array[pointer] = url;
     // Add url to history list
     dropdownMenu = document.getElementById("dropdownMenu");
+
+    // Create a container div
+    const linkContainer = document.createElement("div");
+    linkContainer.id = "link-container";
+
     const newLink = document.createElement("a");
     newLink.id = url;
     newLink.textContent = header.substring(0,10);
+
     newLink.onclick = function(){
-      openHistoryURL(newLink.id)
+      openHistoryURL(newLink.id);
     }
-    dropdownMenu.appendChild(newLink);
+
+    // Add a delete button element for each <a> elememt in our dropdownMenu
+    const newDeleteButton = document.createElement("button");
+    newDeleteButton.textContent = "X"
+    // Give the button an id of the current url. This allows us to identify which <a> element the button corresponds to. When we delete an <a> element we can link the delete button's id to the <a> element.
+    newDeleteButton.id = url;
+
+    newDeleteButton.onclick = function(){
+      deleteHistoryItem(newDeleteButton.id);
     }
-   
+
+    // Append the new link and delete button to a container.
+    linkContainer.appendChild(newLink);
+    linkContainer.appendChild(newDeleteButton)
+
+    // Add the new container to our drop down menu.
+    dropdownMenu.appendChild(linkContainer)
+    }
+  
 };
 
 async function fetchData() {
