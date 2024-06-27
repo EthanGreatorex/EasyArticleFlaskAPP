@@ -84,13 +84,15 @@ function updateHistory(url, header){
     // Give the button an id of the current url. This allows us to identify which <a> element the button corresponds to. When we delete an <a> element we can link the delete button's id to the <a> element.
     newDeleteButton.id = url;
 
-    newDeleteButton.onclick = function(){
+    newDeleteButton.onclick = function(event){
+      event.preventDefault();
+      event.stopPropagation(); // stop the click from causing the <a> link to fire instead.
       deleteHistoryItem(newDeleteButton.id);
     }
 
     // Append the new link and delete button to a container.
     linkContainer.appendChild(newLink);
-    linkContainer.appendChild(newDeleteButton)
+    newLink.appendChild(newDeleteButton)
 
     // Add the new container to our drop down menu.
     dropdownMenu.appendChild(linkContainer)
