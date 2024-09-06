@@ -1,6 +1,6 @@
 **What is Easy Article?**
 
-Easy Article is an app devloped using Python for the backend and javascript for the front-end. The main goal of the app is to be able to read articles is a cleaner and less cluttered environmen. The application works by using a web scraper targeted at a
+Easy Article is an app devloped using Python for the backend and Javascript for the front-end. The main goal of the app is to be able to read articles is a cleaner and less cluttered environmen. The application works by using a web scraper targeted at a
 specific URL and retrieves a header element and all the <p> elements from the site.
 
 **How does it work?**
