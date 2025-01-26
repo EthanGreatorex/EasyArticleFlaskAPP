@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 import httpx
 from selectolax.parser import HTMLParser
+import threading
+import time
+import requests
 
 app = Flask(__name__)
 
@@ -84,5 +87,18 @@ def open_headline():
     headline_link = extract_headline_link(html, "ssrcss-afqep1-PromoLink exn3ah91")
     return jsonify(url=headline_link)
 
+# Function to ping the app periodically
+def keep_alive():
+    while True:
+        try:
+            # Ping your app's URL
+            requests.get("https://easy-article.onrender.com")
+            print("Pinged the app to keep it alive!")
+        except Exception as e:
+            print(f"Error pinging the app: {e}")
+        time.sleep(600)  # Ping every 10 minutes
+
 if __name__ == '__main__':
+    # daemon does not stop the program from exiting
+    threading.Thread(target=keep_alive, daemon=True).start()
     app.run(debug=True)
