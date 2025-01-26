@@ -153,3 +153,55 @@ a {
   right:1%;
 
 }
+
+@media (max-width: 1000px) {
+  .myWebsite, .dropdown{
+    top: 10%;
+  }
+
+  h1{
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 800px) {
+
+  h1{
+    font-size: 28px;
+    margin-bottom: 80px;
+  }
+
+  button{
+    font-size: 14px;
+  }
+
+  textarea{
+    height: 10px;
+    font-size: 14px;
+  }
+
+  .myWebsite, .dropdown{
+    top: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  h1{
+    font-size: 28px;
+    margin-bottom: 90px;
+  }
+
+  button{
+    font-size: 14px;
+  }
+
+  textarea{
+    height: 10px;
+    font-size: 14px;
+  }
+
+  .myWebsite, .dropdown{
+    top: 10%;
+  }
+}
