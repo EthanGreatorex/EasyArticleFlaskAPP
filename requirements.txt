@@ -1,7 +1,5 @@
 flask
 httpx
 selectolax
-threading
-time
 requests
 gunicorn
