@@ -186,7 +186,7 @@ async function fetchWikiData(term) {
   console.log(data.text.length)
   if (data.text.length < 50){
     console.log("Text too short")
-    document.getElementById("textArea").value = "Uh oh! No results have been found for your query 😟"
+    document.getElementById("textArea").value = "Uh oh! No results have been found for your query 😟 You may have to be more specific in your search query."
   }
   else{
     console.log("Data valid")
