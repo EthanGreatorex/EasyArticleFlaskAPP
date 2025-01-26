@@ -181,14 +181,24 @@ async function fetchWikiData(term) {
     body: JSON.stringify({ term: term }),
   });
   const data = await response.json();
-  document.getElementById("urlInput").value = data.url;
-  document.getElementById("headerText").innerText = data.header;
-  document.getElementById(
-    "readingTimeText"
-  ).innerText = `Estimated reading time: ${data.reading_time} minutes`;
-  document.getElementById("textArea").value = data.text.join("\n\n");
 
-  updateHistory(`https://en.wikipedia.org/wiki/${term}`, data.header);
+  console.log("Checking validity of data...")
+  console.log(data.text.length)
+  if (data.text.length < 50){
+    console.log("Text too short")
+    document.getElementById("textArea").value = "Uh oh! No results have been found for your query 😟"
+  }
+  else{
+    console.log("Data valid")
+    document.getElementById("urlInput").value = data.url;
+    document.getElementById("headerText").innerText = data.header;
+    document.getElementById(
+      "readingTimeText"
+    ).innerText = `Estimated reading time: ${data.reading_time} minutes`;
+    document.getElementById("textArea").value = data.text.join("\n\n").trim();
+
+    updateHistory(`https://en.wikipedia.org/wiki/${term}`, data.header)
+  }
 }
 
 async function openHeadline() {
@@ -204,3 +214,7 @@ async function openHeadline() {
   fetchData();
 }
 
+// A function to open my personal website
+function openMyWebsite(){
+  window.open("https://ethangreatorex.github.io/EthanGreatorexPortfolio/", "_blank");
+}

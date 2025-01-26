@@ -7,40 +7,39 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.css') }}"
     />
-    <title>Easy Article</title>
+    <title>👾Easy Article🚀</title>
   </head>
   <body>
     <div class="dropdown">
-      <button id="dropdownButton">History</button>
+      <button id="dropdownButton">📖History📖</button>
       <div id="dropdownMenu" class="dropdown-content">
       </div>
     </div>
+    <button class="myWebsite" onclick="openMyWebsite()">🧑‍🚀My Website🪐</button>
 
 
-      <h1>Easy Article</h1>
+      <h1>👾🛰️Easy Article🚀☄️</h1>
       <textarea id="urlInput" placeholder="Paste URL..."></textarea>
-      <button onclick="fetchData()">Fetch URL</button>
-      <button onclick="openWebsite()">Open Website</button>
-      <button onclick="openWikiSearch()">Wiki Search</button>
-      <button onclick="openHeadline()">Headline</button>
-      <button onclick="openFile()">Open File</button>
-      <button onclick="saveText()">Save File</button>
-      <button onclick="clearText()">Clear</button>
+      <button onclick="fetchData()">📭Fetch URL📭</button>
+      <button onclick="openWebsite()">🌐Open Website🌐</button>
+      <button onclick="openWikiSearch()">🔎Wiki Search🔎</button>
+      <button onclick="openHeadline()">📢Headline📢</button>
+      <button onclick="openFile()">📂Open File📂</button>
+      <button onclick="saveText()">💾Save File💾</button>
+      <button onclick="clearText()">🧹Clear🧹</button>
 
       <h2 id="headerText"></h2>
       <p id="readingTimeText"></p>
       <textarea id="textArea" class="outputTextArea" readonly></textarea>
-      <h2>Want do download the app for Windows?</h2>
+      <h2>❔Want to download the app❔</h2>
       <button id="downloadButton">
-        <a href="{{ url_for('static', filename='js/dist.zip') }}" download
-          >Download App</a
+        <a href="{{ url_for('static', filename='js/easy-article.exe') }}" download
+          >➕Download App➕</a
         >
       </button>
-      <h3>Instructions:</h3>
-      <p>Unzip the file</p>
-      <p>Double click on the folder</p>
-      <p>Double click on the easy-article folder</p>
-      <p>Double click on easy-article.exe</p>
+      <p>
+        <i>The application may be flagged by your anti-virus software_.<br> This app is open-source and the code can be found on my <a href="https://github.com/EthanGreatorex", target="_blank">github</a></i>
+      </p>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
   </body>
