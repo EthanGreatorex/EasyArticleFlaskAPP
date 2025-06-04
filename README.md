@@ -4,7 +4,17 @@ Easy Article is an app developed using Python for the back-end and Javascript fo
 
 You may be thinking, "this has already be done", and I realise this, however I thought it would be a fun project to work on. 
 
-The design of the website is certainly not everyones taste, the design I have chosen is a representation of the style I enjoy.
+# Features
+
+Fetch wikipedia articles using a simple search term
+
+See the top headline from BCC News
+
+Fetch the text from articles without having to view intrusrive adverts or images
+
+Import and Export from txt files
+
+Save your article history for easy access
 
 ## Preview
 ![image](https://github.com/user-attachments/assets/4a93fba2-595b-4702-91b1-f8217ac3e960)
