@@ -8,7 +8,7 @@ You may be thinking, "this has already be done", and I realise this, however I t
 
 Fetch wikipedia articles using a simple search term
 
-See the top headline from BCC News
+See the top headline from BCC News (Feature currently not working due to BBC News website changes)
 
 Fetch the text from articles without having to view intrusrive adverts or images
 
